@@ -13,8 +13,9 @@ SCC <- readRDS("data\\Source_Classification_Code.rds")
 #NEI<-merge(NEI,SCC)
 
 #open a png device
-png("plot1.png", width=480, height=480)
+png("plot3.png", width=800, height=500)
 
-p<-summarise(group_by(NEI,year),total=sum(Emissions))
-plot(p$year,p$total,type = 'b',main = "PM2.5 emitted,over time",xlab = "Year",ylab = "Emissions(Tons)")
+t<-filter(NEI, fips == "24510")
+p<-summarise(group_by(t,year,type),total=sum(Emissions))
+qplot(year,total,data=p,facets = . ~ type, geom = c("point","smooth"),method="lm",ylab ="Emissions(Tons)",main = "Baltimore City, Maryland PM2.5 emitted, over time per Type")
 dev.off()
