@@ -1,4 +1,5 @@
 library(dplyr)
+library(ggplot2)
 
 # Download the files if its not there
 if(!file.exists("data")) {
@@ -9,7 +10,7 @@ if(!file.exists("data")) {
 }
 
 NEI <- readRDS("data\\summarySCC_PM25.rds")
-SCC <- readRDS("data\\Source_Classification_Code.rds")
+#SCC <- readRDS("data\\Source_Classification_Code.rds")
 #NEI<-merge(NEI,SCC)
 
 #open a png device
