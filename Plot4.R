@@ -10,11 +10,11 @@ if(!file.exists("data")) {
 
 NEI <- readRDS("data\\summarySCC_PM25.rds")
 SCC <- readRDS("data\\Source_Classification_Code.rds")
-#NEI<-merge(NEI,SCC)
 
 #open a png device
 png("plot4.png", width=800, height=500)
-i<-grep(pattern = "coal",x = SCC$Short.Name,ignore.case = TRUE ) #get the rows number we have "coal" in Short.Name
+#get the row numbers we have "coal" in Short.Name. I Assume searhing Short.Name for "coal" is enogth to detect 'coal combustion-related sources '
+i<-grep(pattern = "coal",x = SCC$Short.Name,ignore.case = TRUE )
 c<-as.character(SCC$SCC[i]) #conver dom factor to charcter
 NEI1<-NEI[NEI$SCC %in% c,]
 p<-summarise(group_by(NEI1,year),total=sum(Emissions))
