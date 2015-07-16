@@ -9,12 +9,9 @@ if(!file.exists("data")) {
 }
 
 NEI <- readRDS("data\\summarySCC_PM25.rds")
-#SCC <- readRDS("data\\Source_Classification_Code.rds")
-#NEI<-merge(NEI,SCC)
 
 #open a png device
 png("plot1.png", width=480, height=480)
-
 p<-summarise(group_by(NEI,year),total=sum(Emissions))
 #plot(p$year,p$total,type = 'b',main = "PM2.5 emitted,over time",xlab = "Year",ylab = "Emissions(Tons)")
 barplot(p$total/1000,names.arg=p$year,main = "PM2.5 emitted,over time",xlab = "Year",ylab = "Emissions(Thouesnds of Tons)")
