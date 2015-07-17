@@ -11,10 +11,10 @@ if(!file.exists("data")) {
 
 NEI <- readRDS("data\\summarySCC_PM25.rds")
 
-#open a png device
-png("plot3.png", width=800, height=500)
-
 t<-filter(NEI, fips == "24510")
 p<-summarise(group_by(t,year,type),total=sum(Emissions))
-qplot(year,total,data=p,facets = . ~ type, geom = c("point","smooth"),method="lm",ylab ="Emissions(Tons)",main = "Baltimore City, Maryland PM2.5 emitted, over time per Type")
+
+#open a png device
+png("plot3.png", width=800, height=500)
+qplot(year,total,data=p,facets = . ~ type, geom = c("point","smooth"),method="lm",ylab ="Emissions(Tons)",main = "Baltimore City, Maryland, Yearly PM2.5 emitted, over time per Type")
 dev.off()
