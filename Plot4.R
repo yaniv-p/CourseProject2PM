@@ -18,6 +18,6 @@ NEI1<-NEI[NEI$SCC %in% c,] #build DF with only the wanted rows.
 p<-summarise(group_by(NEI1,year),total=sum(Emissions))
 
 #open a png device
-png("plot4.png", width=800, height=500)
+png("plot4.png", width=650, height=500)
 barplot(p$total/1000,names.arg=p$year,main = "Coal combustion-related, Yearly PM2.5 emitted,over time",xlab = "Year",ylab = "Emissions(Thouesnds of Tons)")
 dev.off()

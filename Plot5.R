@@ -17,6 +17,6 @@ NEI1<-t[t$SCC %in% SCC[SCC$Data.Category=="Onroad","SCC"],]
 p<-summarise(group_by(NEI1,year),total=sum(Emissions))
 
 #open a png device
-png("plot5.png", width=800, height=500)
+png("plot5.png", width=650, height=500)
 barplot(p$total,names.arg=p$year,main = "Baltimore City, Maryland motor vehicle sources related, Yearly PM2.5 emitted,over time",xlab = "Year",ylab = "Emissions(Tons)")
 dev.off()
